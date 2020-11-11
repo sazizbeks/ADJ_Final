@@ -72,7 +72,7 @@ public class Event {
                 '}';
     }
 
-    private static class Builder{
+    public static class Builder{
         private Integer id;
         private String name;
         private Date start_date;

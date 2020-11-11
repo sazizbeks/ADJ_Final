@@ -77,5 +77,18 @@ CREATE TABLE Events_Students(
         ON UPDATE CASCADE
 );
 
+INSERT INTO MAJORS
+VALUES
+    ('SE', 'Software Engineer'),
+    ('CS', 'Computer Science'),
+    ('ITM', 'IT Management'),
+    ('MT', 'Media Technologies');
 
+INSERT INTO GROUPS
+VALUES ('SE', 1906),('CS', 1905),('SE', 1905),('SE',1904),('MT', 1902);
 
+INSERT INTO STUDENTS(student_fname, student_lname, year, username, password, major_id, group_number)
+VALUES
+    ('Azizbek', 'Seitmagambetov', 2001, 'aseitmagambetov', 'Qwerty123', 'SE', 1906),
+    ('Ibragim', 'Kuanyshbay', 2002, 'ikuanyshbay', 'Qwerty123', 'SE', 1906),
+    ('Eskendir', 'Musatai', 2001, 'emusatai', 'Qwerty123', 'MT', 1902);

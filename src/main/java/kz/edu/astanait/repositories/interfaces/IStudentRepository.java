@@ -1,6 +1,6 @@
 package kz.edu.astanait.repositories.interfaces;
 
-import kz.edu.astanait.models.Group;
+import kz.edu.astanait.models.Student;
 
-public interface IStudentRepository extends CRUD<Group>{
+public interface IStudentRepository extends CRUD<Student> {
 }

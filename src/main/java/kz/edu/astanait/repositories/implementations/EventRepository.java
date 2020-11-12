@@ -1,6 +1,5 @@
 package kz.edu.astanait.repositories.implementations;
 
-import kz.edu.astanait.databases.IDB;
 import kz.edu.astanait.databases.Postgres;
 import kz.edu.astanait.models.Event;
 import kz.edu.astanait.repositories.interfaces.IEventRepository;
@@ -12,8 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EventRepository implements IEventRepository {
-
-    private final IDB db = new Postgres();
 
     @Override
     public Event queryOne(String sql) {
@@ -30,7 +27,7 @@ public class EventRepository implements IEventRepository {
     public List<Event> findSeveral(String sql) {
         List<Event> list = new LinkedList<>();
         try {
-            Statement statement = db.getConnection().createStatement();
+            Statement statement = Postgres.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 list.add(

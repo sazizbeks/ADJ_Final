@@ -1,6 +1,5 @@
 package kz.edu.astanait.repositories.implementations;
 
-import kz.edu.astanait.databases.IDB;
 import kz.edu.astanait.databases.Postgres;
 import kz.edu.astanait.exceptions.NotFoundException;
 import kz.edu.astanait.models.Group;
@@ -17,12 +16,10 @@ import java.util.List;
 
 public class StudentRepository implements IStudentRepository {
 
-    private final IDB db = new Postgres();
-
     @Override
     public Student queryOne(String sql) throws NotFoundException {
         try {
-            Statement statement = db.getConnection().createStatement();
+            Statement statement = Postgres.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sql);
             if (rs.next()) {
                 return new Student.Builder()
@@ -47,7 +44,7 @@ public class StudentRepository implements IStudentRepository {
         List<Student> list = new LinkedList<>();
 
         try {
-            Statement statement = db.getConnection().createStatement();
+            Statement statement = Postgres.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 list.add(
@@ -85,7 +82,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findByGroup(Group group) throws NotFoundException {
         String sql = "SELECT * FROM students WHERE major_id=? AND group_number=?";
         try {
-            PreparedStatement ps = db.getConnection().prepareStatement(sql);
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
             ps.setString(1,group.getMajor_id());
             ps.setInt(2,group.getGroup_number());
             return findSeveral(ps.toString());
@@ -99,7 +96,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findByMajor(Major major) throws NotFoundException {
         String sql = "SELECT * FROM students WHERE major_id=?";
         try {
-            PreparedStatement ps = db.getConnection().prepareStatement(sql);
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
             ps.setString(1,major.getId());
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
@@ -112,7 +109,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findByYear(Integer year) throws NotFoundException {
         String sql = "SELECT * FROM students WHERE year=?";
         try {
-            PreparedStatement ps = db.getConnection().prepareStatement(sql);
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
             ps.setInt(1,year);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
@@ -125,7 +122,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findByFName(String fname) throws NotFoundException {
         String sql = "SELECT * FROM students WHERE student_fname=?";
         try {
-            PreparedStatement ps = db.getConnection().prepareStatement(sql);
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
             ps.setString(1,fname);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
@@ -138,7 +135,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findByLName(String lname) throws NotFoundException {
         String sql = "SELECT * FROM students WHERE student_lname=?";
         try {
-            PreparedStatement ps = db.getConnection().prepareStatement(sql);
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
             ps.setString(1,lname);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {

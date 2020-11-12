@@ -1,10 +1,6 @@
 package kz.edu.astanait.repositories.interfaces;
 
-import java.util.List;
-
-public interface CRUD <T> {
-    T queryOne(String id);
-    List<T> getAll();
+public interface CRUD <T> extends IRetrieve<T>{
     void add(T entity);
     void update(T entity);
     void delete(T entity);

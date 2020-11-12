@@ -4,6 +4,10 @@ public class Major {
     private String id;
     private String full_name;
 
+    public Major(String id) {
+        this.id = id;
+    }
+
     public Major(String id, String full_name) {
         this.id = id;
         this.full_name = full_name;

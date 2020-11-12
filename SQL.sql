@@ -92,3 +92,17 @@ VALUES
     ('Azizbek', 'Seitmagambetov', 2001, 'aseitmagambetov', 'Qwerty123', 'SE', 1906),
     ('Ibragim', 'Kuanyshbay', 2002, 'ikuanyshbay', 'Qwerty123', 'SE', 1906),
     ('Eskendir', 'Musatai', 2001, 'emusatai', 'Qwerty123', 'MT', 1902);
+
+INSERT INTO admins(admin_id, username, password) VALUES (1,'sazizbek','1234'),
+                                                        (2, 'kibragim','1234'),
+                                                        (3,'oakan','1234'),
+                                                        (4,'oaidana','1234');
+
+INSERT INTO clubs(club_id, club_name) VALUES (101,'KCA AITU'),
+                                             (102,'Adal Volunteer Club'),
+                                             (103,'AITU TedX Club'),
+                                             (104,'Shokugeki Culinary club'),
+                                             (105,'AITU SMM Club'),
+                                             (106,'AITU Dance Club'),
+                                             (107,'Event Club'),
+                                             (108,'Evergreen eco club');

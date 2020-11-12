@@ -16,19 +16,22 @@ public class EventRepository implements IEventRepository {
     private final IDB db = new Postgres();
 
     @Override
-    public Event queryOne(String id) {
+    public Event queryOne(String sql) {
         return null;
     }
 
     @Override
     public List<Event> getAll() {
-        List<Event> list = new LinkedList<>();
+        String sql = "SELECT * FROM events";
+        return findSeveral(sql);
+    }
 
+    @Override
+    public List<Event> findSeveral(String sql) {
+        List<Event> list = new LinkedList<>();
         try {
-            String sql = "SELECT * FROM events";
             Statement statement = db.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sql);
-
             while (rs.next()) {
                 list.add(
                         new Event.Builder()
@@ -40,11 +43,9 @@ public class EventRepository implements IEventRepository {
                                 .build()
                 );
             }
-
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-
         return list;
     }
 

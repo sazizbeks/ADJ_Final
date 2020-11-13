@@ -1,4 +1,4 @@
-package kz.edu.astanait.rest;
+package kz.edu.astanait.api.rest;
 
 import kz.edu.astanait.exceptions.NotFoundException;
 import kz.edu.astanait.models.Group;

@@ -5,11 +5,11 @@ public class Major {
     private String full_name;
 
     public Major(String id) {
-        this.id = id;
+        setId(id);
     }
 
     public Major(String id, String full_name) {
-        this.id = id;
+        setId(id);
         this.full_name = full_name;
     }
 
@@ -18,7 +18,7 @@ public class Major {
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id.toUpperCase();
     }
 
     public String getFull_name() {

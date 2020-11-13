@@ -8,7 +8,7 @@ public class Group {
     }
 
     public Group(String major_id, Integer group_number) {
-        this.major_id = major_id;
+        setMajor_id(major_id);
         this.group_number = group_number;
     }
 
@@ -17,7 +17,7 @@ public class Group {
     }
 
     public void setMajor_id(String major_id) {
-        this.major_id = major_id;
+        this.major_id = major_id.toUpperCase();
     }
 
     public Integer getGroup_number() {

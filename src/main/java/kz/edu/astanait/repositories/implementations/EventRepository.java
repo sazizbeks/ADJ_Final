@@ -5,6 +5,7 @@ import kz.edu.astanait.exceptions.NotFoundException;
 import kz.edu.astanait.models.Event;
 import kz.edu.astanait.repositories.interfaces.IEventRepository;
 
+import javax.ws.rs.BadRequestException;
 import java.sql.*;
 import java.util.Date;
 import java.util.LinkedList;
@@ -33,7 +34,7 @@ public class EventRepository implements IEventRepository {
     }
 
     @Override
-    public List<Event> findSeveral(String sql) {
+    public List<Event> findSeveral(String sql) throws BadRequestException {
         List<Event> list = new LinkedList<>();
         try {
             Statement statement = Postgres.getConnection().createStatement();
@@ -50,7 +51,7 @@ public class EventRepository implements IEventRepository {
                 );
             }
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            throw new BadRequestException();
         }
         return list;
     }
@@ -75,7 +76,7 @@ public class EventRepository implements IEventRepository {
      * @param entity - object of Event
      */
     @Override
-    public void add(Event entity) {
+    public void add(Event entity) throws BadRequestException {
         String sql = "INSERT INTO events(EVENT_NAME, EVENT_START_DATE, EVENT_END_DATE, EVENT_CREATOR_ID) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
@@ -85,7 +86,7 @@ public class EventRepository implements IEventRepository {
             ps.setInt(4, entity.getCreator_id());
             ps.execute();
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            throw new BadRequestException();
         }
     }
 
@@ -103,7 +104,7 @@ public class EventRepository implements IEventRepository {
      * @param entity - object of Event
      */
     @Override
-    public void update(Event entity) {
+    public void update(Event entity) throws BadRequestException {
         StringBuilder sql = new StringBuilder("UPDATE EVENTS SET");
         if (entity.getName() != null) sql.append(" event_name=?,");
         if (entity.getStart_date() != null) sql.append(" event_start_date=?,");
@@ -122,7 +123,7 @@ public class EventRepository implements IEventRepository {
             ps.setInt(i, entity.getId());
             ps.execute();
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            throw new BadRequestException();
         }
     }
 
@@ -136,12 +137,12 @@ public class EventRepository implements IEventRepository {
      * @param entity - object of Event
      */
     @Override
-    public void delete(Event entity) {
+    public void delete(Event entity) throws BadRequestException {
         String sql = "DELETE FROM events WHERE event_id=" + entity.getId();
         try {
             Postgres.getConnection().createStatement().execute(sql);
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            throw new BadRequestException();
         }
     }
 

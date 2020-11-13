@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/student")
-public class StudentService {
+public class StudentService  {
 
     private final IStudentRepository studentRepository = new StudentRepository();
 
@@ -25,20 +25,20 @@ public class StudentService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll() {
         List<Student> list = studentRepository.getAll();
-        return Response.status(Response.Status.FOUND).entity(list).build();
+        return Response.ok(list).build();
     }
 
     @GET
     @Path("/getById/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getId(@PathParam("id") Integer id) {
+    public Response getById(@PathParam("id") Integer id) {
         Student student;
         try {
             student = studentRepository.findById(id);
         } catch (NotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.status(Response.Status.FOUND).entity(student).build();
+        return Response.ok(student).build();
     }
 
     @GET

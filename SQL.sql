@@ -91,6 +91,8 @@ INSERT INTO STUDENTS(student_fname, student_lname, year, username, password, maj
 VALUES
     ('Azizbek', 'Seitmagambetov', 2001, 'aseitmagambetov', 'Qwerty123', 'SE', 1906),
     ('Ibragim', 'Kuanyshbay', 2002, 'ikuanyshbay', 'Qwerty123', 'SE', 1906),
+    ('Aidana','Orunbassarova',2001,'aorunbassarova','Qwerty123','SE',1906),
+    ('Akan','Otebay',2002,'aotebai','Qwerty123','SE',1906),
     ('Eskendir', 'Musatai', 2001, 'emusatai', 'Qwerty123', 'MT', 1902);
 
 INSERT INTO admins(admin_id, username, password) VALUES (1,'sazizbek','1234'),

@@ -1,6 +1,5 @@
 package kz.edu.astanait.models;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class Event {
@@ -41,7 +40,7 @@ public class Event {
         return start_date;
     }
 
-    public void setStart_date(Timestamp start_date) {
+    public void setStart_date(Date start_date) {
         this.start_date = start_date;
     }
 
@@ -49,7 +48,7 @@ public class Event {
         return end_date;
     }
 
-    public void setEnd_date(Timestamp end_date) {
+    public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
 

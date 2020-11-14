@@ -90,7 +90,7 @@ public class GroupRepository  implements IGroupRepository {
             ResultSet rs = statement.executeQuery(sql);
             if (rs.next()) {
                 return new Group.Builder()
-                        .setMajor_id(rs.getInt("major_id"))
+                        .setMajor_id(rs.getString("major_id"))
                         .setGroup_number(rs.getInt("group_number"))
                         .build();
             }
@@ -115,9 +115,9 @@ public class GroupRepository  implements IGroupRepository {
             while (rs.next()) {
                 list.add(
                         new Group.Builder()
-                                .setMajor_id(rs.getInt("major_id"))
+                                .setMajor_id(rs.getString("major_id"))
                                 .setGroup_number(rs.getInt("group_number"))
-                                .build();
+                                .build()
                 );
             }
         } catch (SQLException throwable) {

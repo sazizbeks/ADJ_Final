@@ -6,6 +6,7 @@ import kz.edu.astanait.models.Major;
 import kz.edu.astanait.models.Student;
 import org.glassfish.jersey.client.ClientConfig;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -52,5 +53,15 @@ public class StudentClient {
     public Student[] getByLName(String lname) {
         return getWebTarget().path("getByLName/" + lname)
                 .request().accept(MediaType.APPLICATION_JSON).get(Student[].class);
+    }
+
+    public Student getByUsername(String username) {
+        try {
+            return getWebTarget().path("getByUsername/" + username)
+                    .request().accept(MediaType.APPLICATION_JSON).get(Student.class);
+
+        } catch (Exception e) {
+            throw new BadRequestException("Student with such username has not found");
+        }
     }
 }

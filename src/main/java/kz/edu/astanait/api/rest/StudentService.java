@@ -7,16 +7,13 @@ import kz.edu.astanait.models.Student;
 import kz.edu.astanait.repositories.implementations.StudentRepository;
 import kz.edu.astanait.repositories.interfaces.IStudentRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/student")
-public class StudentService  {
+public class StudentService {
 
     private final IStudentRepository studentRepository = new StudentRepository();
 
@@ -101,10 +98,24 @@ public class StudentService  {
         List<Student> list;
         try {
             list = studentRepository.findByLName(lname);
+        } catch (ServerErrorException e) {
+            return Response.serverError().entity(e.getMessage()).build();
         } catch (NotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(list).build();
     }
 
+    @GET
+    @Path("/getByUsername/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByUsername(@PathParam("username") String username) {
+        Student student;
+        try {
+            student = studentRepository.findByUsername(username);
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(student).build();
+    }
 }

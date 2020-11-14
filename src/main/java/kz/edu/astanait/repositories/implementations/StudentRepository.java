@@ -79,12 +79,27 @@ public class StudentRepository implements IStudentRepository {
     }
 
     @Override
+    public Student findByUsername(String username) throws NotFoundException {
+        String sql = "SELECT * FROM STUDENTS WHERE username=?";
+        try {
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
+            ps.setString(1, username);
+            return queryOne(ps.toString());
+        } catch (NotFoundException e) {
+            throw new NotFoundException("Student with such username has not found.");
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        throw new NotFoundException("Student with such username has not found.");
+    }
+
+    @Override
     public List<Student> findByGroup(Group group) throws NotFoundException {
         String sql = "SELECT * FROM students WHERE major_id=? AND group_number=?";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setString(1,group.getMajor_id());
-            ps.setInt(2,group.getGroup_number());
+            ps.setString(1, group.getMajor_id());
+            ps.setInt(2, group.getGroup_number());
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -97,7 +112,7 @@ public class StudentRepository implements IStudentRepository {
         String sql = "SELECT * FROM students WHERE major_id=?";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setString(1,major.getId());
+            ps.setString(1, major.getId());
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -110,7 +125,7 @@ public class StudentRepository implements IStudentRepository {
         String sql = "SELECT * FROM students WHERE year=?";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setInt(1,year);
+            ps.setInt(1, year);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -123,7 +138,7 @@ public class StudentRepository implements IStudentRepository {
         String sql = "SELECT * FROM students WHERE student_fname=?";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setString(1,fname);
+            ps.setString(1, fname);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -136,7 +151,7 @@ public class StudentRepository implements IStudentRepository {
         String sql = "SELECT * FROM students WHERE student_lname=?";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setString(1,lname);
+            ps.setString(1, lname);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

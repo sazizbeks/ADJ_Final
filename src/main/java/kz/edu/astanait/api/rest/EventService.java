@@ -43,7 +43,8 @@ public class EventService {
         return Response.ok("Event successfully modified.").build();
     }
 
-    @DELETE
+    @POST
+    @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(Event event) {
         try {

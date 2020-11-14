@@ -20,7 +20,11 @@ public class EventClient {
         getWebTarget(postURL).request().post(Entity.entity(event, MediaType.APPLICATION_JSON), Response.class);
     }
 
-//    public void delete(Event event){
-//        getWebTarget(postURL).request().delete();
-//    }
+    public void update(Event event){
+        getWebTarget(postURL).request().put(Entity.entity(event, MediaType.APPLICATION_JSON), Response.class);
+    }
+
+    public void delete(Event event) {
+        getWebTarget(postURL).path("/delete").request().post(Entity.entity(event, MediaType.APPLICATION_JSON), Response.class);
+    }
 }

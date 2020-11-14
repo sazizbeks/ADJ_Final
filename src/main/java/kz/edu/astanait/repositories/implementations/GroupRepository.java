@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GroupRepository  implements IGroupRepository {
+public class GroupRepository implements IGroupRepository {
     @Override
     public void add(Group entity) throws BadRequestException {
         String sql = "INSERT INTO groups (MAJOR_ID, GROUP_NUMBER) VALUES (?,?)";
@@ -26,62 +26,41 @@ public class GroupRepository  implements IGroupRepository {
             throw new BadRequestException();
         }
     }
-    /**
-     * Example of usage:
-     * IGroupRepository rep = new GroupRepository();
-     * rep.add(new Group.Builder().
-     * setString("Testing Group add")
-     * .setString("1910")
-     * .build());
-     *
-     * @param entity - object of Group
-     */
 
     @Override
-    public void update(Group entity) throws BadRequestException {
-
+    public void update(Group oldGroup, Group newGroup) throws BadRequestException {
         StringBuilder sql = new StringBuilder("UPDATE GROUPS SET");
-        if (entity.getGroup_number() != null) sql.append("group_number=?,");
+        if (newGroup.getMajor_id() != null) sql.append(" major_id=?,");
+        if (newGroup.getGroup_number() != null) sql.append(" group_number=?,");
         sql.deleteCharAt(sql.length() - 1);
-        sql.append(" WHERE major_id=?");
+        sql.append(" WHERE major_id=? AND group_number=?");
 
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql.toString());
             int i = 1;
-            if (entity.getGroup_number() != null) ps.setInt(i++, entity.getGroup_number());
-            ps.setString(i, entity.getMajor_id());
+            if (newGroup.getMajor_id() != null) ps.setString(i++, newGroup.getMajor_id());
+            if (newGroup.getGroup_number() != null) ps.setInt(i++, newGroup.getGroup_number());
+            ps.setString(i++, oldGroup.getMajor_id());
+            ps.setInt(i, oldGroup.getGroup_number());
             ps.execute();
         } catch (SQLException throwable) {
             throw new BadRequestException();
         }
     }
-    /**
-     * Example of usage:
-     * IGroupRepository rep = new GroupRepository();
-     *         rep.update(new Group.Builder()
-     *                 .setMajor_id(1)
-     *                 .setGroup_number("1910")
-     *                 .build());
-     *
-     * @param entity - object of Group
-     */
+
     @Override
     public void delete(Group entity) throws BadRequestException {
-        String sql = "DELETE FROM groups WHERE major_id=" + entity.getMajor_id();
+        String sql = "DELETE FROM groups WHERE major_id=? AND group_number=?";
         try {
-            Postgres.getConnection().createStatement().execute(sql);
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
+            ps.setString(1, entity.getMajor_id());
+            ps.setInt(2, entity.getGroup_number());
+            ps.execute();
         } catch (SQLException throwable) {
             throw new BadRequestException();
         }
     }
-    /**
-     * Example of usage:
-     * IGroupRepository rep = new GroupRepository();
-     *         rep.delete(new Group.Builder()
-     *                 .setMajor_id(1)
-     *                 .build());
-     *
-     */
+
     @Override
     public Group queryOne(String sql) throws NotFoundException {
         try {
@@ -124,4 +103,6 @@ public class GroupRepository  implements IGroupRepository {
         }
         return list;
     }
+
+
 }

@@ -18,7 +18,7 @@
             <c:when test="${events.rows[0]==null}">
                 <div class="text-center">
                     <ul class="list-group">
-                        <li class="list-group-item">You have no news</li>
+                        <li class="list-group-item">You have no events</li>
                     </ul>
                     <br>
                 </div>

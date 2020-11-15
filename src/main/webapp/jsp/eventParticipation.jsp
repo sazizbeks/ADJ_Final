@@ -1,6 +1,10 @@
-<%@include file="/jsp/index.components/header.jsp" %>
-<s:query dataSource="${snapshot}" var="events">
-    SELECT * FROM events ORDER BY 1;
+<%@include file="/jsp/index.components/header.jsp"%>
+<s:query dataSource = "${snapshot}" var = "events">
+    SELECT DISTINCT e.*
+    FROM events_students
+    INNER JOIN events e on e.event_id = events_students.event_id
+    WHERE student_id = ${sessionScope.user.id}
+    ORDER BY 1;
 </s:query>
 <main class="main">
 
@@ -14,7 +18,7 @@
             </button>
         </a>
 
-        <a href="<c:url value="/jsp/eventParticipation.jsp"/>">
+        <a href="<c:url value="/jsp/studentEvents.jsp"/>">
             <button class="btn btn-primary">
                 My participation
             </button>
@@ -27,11 +31,6 @@
                     <li class="list-group-item">${row.event_start_date}</li>
                     <li class="list-group-item">${row.event_end_date}</li>
                     <li class="list-group-item">${row.event_creator_id}</li>
-                    <form action="<c:url value="/add/event"/>" method="post">
-                        <input type="hidden" name="id" value="${row.event_id}">
-                        <input class="bg-light text-primary border rounded border-primary mt-1 btn-lg col-2 align-self-center"
-                               type="submit" value="Participate">
-                    </form>
                 </ul>
                 <br>
             </div>
@@ -41,4 +40,4 @@
 
 </main>
 
-<%@include file="/jsp/index.components/footer.jsp" %>
+<%@include file="/jsp/index.components/footer.jsp"%>

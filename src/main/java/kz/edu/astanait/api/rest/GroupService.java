@@ -34,9 +34,10 @@ public class GroupService {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(Group old, Group newG) {
+    public Response update(Group[] groups) {
+        Group oldGroup = groups[0], newGroup = groups[1];
         try {
-            groupRepository.update(old, newG);
+            groupRepository.update(oldGroup, newGroup);
         } catch (BadRequestException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }

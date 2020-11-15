@@ -32,8 +32,23 @@
                             <li class="list-group-item">${row.event_start_date}</li>
                             <li class="list-group-item">${row.event_end_date}</li>
                             <li class="list-group-item">${row.event_creator_id}</li>
-                            <input type="submit" class="bg-light text-primary border rounded border-primary" value="edit">
-                            <input type="submit" class="bg-light text-danger border rounded border-danger mt-1" value="delete">
+
+                            <form action="<c:url value="/event"/>">
+                                <input type="hidden" name="eventId" value="${row.event_id}">
+                                <input type="submit"
+                                       class="bg-light text-primary border rounded border-primary mt-1 btn-lg col-2 align-self-center edit"
+                                       name="btnVal"
+                                       value="Edit">
+                            </form>
+
+                            <form action="<c:url value="/event"/>" method="post">
+                                <input type="hidden" name="id" value="${row.event_id}">
+                                <button class="bg-light text-danger border rounded border-danger btn-lg delete col-2 align-self-center"
+                                        name="btnVal"
+                                        value="delete">
+                                    Delete
+                                </button>
+                            </form>
                         </ul>
                         <br>
                     </div>

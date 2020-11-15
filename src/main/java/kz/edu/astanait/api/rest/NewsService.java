@@ -8,6 +8,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+
+@Path("/news")
 public class NewsService {
     private final INewsRepository newsRepository = new NewsRepository();
 

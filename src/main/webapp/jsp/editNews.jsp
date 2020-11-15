@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/sql" %>
 <s:setDataSource var="snapshot" driver="org.postgresql.Driver"
                  url="jdbc:postgresql://localhost:5432/ADJ_Final"
-                 user="postgres" password="3418533"/>
+                 user="postgres" password="87779548066"/>
 
 <s:query dataSource="${snapshot}" var="news">
     SELECT * FROM news WHERE news_id=${cookie.get('newsId').value};

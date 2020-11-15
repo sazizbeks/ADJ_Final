@@ -141,6 +141,7 @@ $(document).ready(function () {
             document.getElementById("badResult").innerHTML = "";
             document.getElementById("goodResult").innerHTML = "";
             document.getElementById("information").className = "noneShow";
+
             $('#IShowOne').removeClass('show').addClass("noneShow");
             $('#IShowByMajor').removeClass('show').addClass("noneShow");
             $('#IShowByGroup').removeClass('show').addClass("noneShow");

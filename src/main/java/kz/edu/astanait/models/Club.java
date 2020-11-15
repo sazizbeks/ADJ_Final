@@ -8,6 +8,15 @@ public class Club {
 
     }
 
+    public Club(Integer club_id, String club_name) {
+        this.club_id = club_id;
+        this.club_name = club_name;
+    }
+
+    public Club(Integer club_id) {
+        this.club_id = club_id;
+    }
+
     public Club(String club_name) {
         this.club_name = club_name;
     }

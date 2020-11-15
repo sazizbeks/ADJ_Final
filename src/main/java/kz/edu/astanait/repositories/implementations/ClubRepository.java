@@ -29,7 +29,7 @@ public class ClubRepository implements IClubRepository {
     @Override
     public void update(Club entity) throws BadRequestException {
         StringBuilder sql = new StringBuilder("UPDATE clubs SET");
-        if (entity.getClub_name() != null) sql.append(" event_name=?,");
+        if (entity.getClub_name() != null) sql.append(" club_name=?,");
         sql.deleteCharAt(sql.length() - 1);
         sql.append(" WHERE club_id=?");
 

@@ -3,7 +3,7 @@
 
 <s:setDataSource var = "snapshot" driver = "org.postgresql.Driver"
                  url = "jdbc:postgresql://localhost:5432/ADJ_Final"
-                 user = "postgres"  password = "87779548066"/>
+                 user = "postgres"  password = "3418533"/>
 
 
 <html>
@@ -25,16 +25,15 @@
             <ul class="navigation__list navigation__list--inline">
                 <li class="navigation__item"><a href="<c:url value="/index.jsp"/>" class="is-active">Home</a></li>
                 <c:if test="${empty sessionScope.user}">
-                    <li class="navigation__item"><a class="is-active" href="<%=application.getContextPath()%>/jsp/login.jsp">Login</a>
+                    <li class="navigation__item">
+                        <a class="is-active" href="<%=application.getContextPath()%>/jsp/login.jsp">Login</a>
                     </li>
-                    <li class="navigation__item"><a class="is-active"
-                                                    href="<%=application.getContextPath()%>/jsp/register.jsp">Register</a></li>
                 </c:if>
                 <c:if test="${!empty sessionScope.user}">
                     <li class="navigation__item is-active"><c:out value="${sessionScope.user.username}"/></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/club.jsp"/>">Club</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/event.jsp"/>">Event</a></li>
-                    <li class="navigation__item is-active"><a href="<c:url value="/jsp/news.jsp"/>">News</a></li>
+                    <li class="navigation__item is-active"><a href="<c:url value="/news?btnVal=all"/>">News</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/student.jsp"/>">Students</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/logout"/>" class="is-active">Logout</a></li>
                 </c:if>

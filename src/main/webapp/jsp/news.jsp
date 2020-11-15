@@ -1,17 +1,17 @@
 <%@include file="/jsp/index.components/header.jsp" %>
 <s:query dataSource="${snapshot}" var="news">
-    SELECT * FROM news;
+    SELECT * FROM news ORDER BY 1;
 </s:query>
 <main class="main">
 
     <div class="grid">
 
         <h1>News</h1>
-        <a href="<c:url value="/news?btnVal=myNews"/>">
-            <button>
+        <form action="<c:url value="/news"/>" method="get">
+            <button type="submit" name="btnVal" value="myNews">
                 My news
             </button>
-        </a>
+        </form>
         <c:forEach var="row" items="${news.rows}">
             <div class="text-center">
                 <ul class="list-group">

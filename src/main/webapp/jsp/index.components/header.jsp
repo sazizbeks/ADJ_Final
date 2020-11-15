@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/sql" %>
 
-<%--<s:setDataSource var = "snapshot" driver = "com.mysql.cj.jdbc.Driver"--%>
-<%--                 url = "jdbc:mysql://localhost:3306/project_sdp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"--%>
-<%--                 user = "root"  password = ""/>--%>
+<s:setDataSource var = "snapshot" driver = "org.postgresql.Driver"
+                 url = "jdbc:postgresql://localhost:5432/ADJ_Final"
+                 user = "postgres"  password = "87779548066"/>
+
 
 <html>
 <head>

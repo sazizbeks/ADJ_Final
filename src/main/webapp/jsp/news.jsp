@@ -8,7 +8,7 @@
 
         <h1>News</h1>
         <form action="<c:url value="/news"/>" method="get">
-            <button type="submit" name="btnVal" value="myNews">
+            <button class="btn btn-primary" type="submit" name="btnVal" value="myNews">
                 My news
             </button>
         </form>

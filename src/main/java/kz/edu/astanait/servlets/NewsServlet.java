@@ -2,13 +2,11 @@ package kz.edu.astanait.servlets;
 
 import kz.edu.astanait.api.client.NewsClient;
 import kz.edu.astanait.models.News;
+import kz.edu.astanait.models.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "NewsServlet", urlPatterns = "/news")
@@ -16,21 +14,40 @@ public class NewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String btnVal = request.getParameter("btnVal");
         NewsClient client = new NewsClient();
-        int id = Integer.parseInt(request.getParameter("id"));
-        if (btnVal.equals("EDIT")) {
-            String title = request.getParameter("title");
-            String desc = request.getParameter("description");
-            News news = new News.Builder()
-                    .setId(id)
-                    .setTitle(title)
-                    .setDescription(desc)
-                    .build();
-            client.update(news);
-        } else if (btnVal.equals("delete")) {
-            News news = new News.Builder()
-                    .setId(id)
-                    .build();
-            client.delete(news);
+
+        switch (btnVal) {
+            case "EDIT": {
+                int id = Integer.parseInt(request.getParameter("id"));
+                String title = request.getParameter("title");
+                String desc = request.getParameter("description");
+                News news = new News.Builder()
+                        .setId(id)
+                        .setTitle(title)
+                        .setDescription(desc)
+                        .build();
+                client.update(news);
+                break;
+            }
+            case "delete": {
+                int id = Integer.parseInt(request.getParameter("id"));
+                News news = new News.Builder()
+                        .setId(id)
+                        .build();
+                client.delete(news);
+                break;
+            }
+            case "ADD":
+                String title = request.getParameter("title");
+                String desc = request.getParameter("description");
+                HttpSession session = request.getSession();
+                client.add(
+                        new News.Builder()
+                                .setTitle(title)
+                                .setDescription(desc)
+                                .setModerator_id(((Student) session.getValue("user")).getId())
+                                .build()
+                );
+                break;
         }
         response.sendRedirect(getServletContext().getContextPath() + "/jsp/studentNews.jsp");
     }

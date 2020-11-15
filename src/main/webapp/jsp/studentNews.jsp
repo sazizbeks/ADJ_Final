@@ -7,6 +7,13 @@
     <div class="grid">
 
         <h1>My news</h1>
+
+        <a href="<c:url value="/jsp/addNews.jsp"/>">
+            <button class="btn btn-primary">
+                Add news
+            </button>
+        </a>
+
         <c:forEach var="news" items="${news.rows}">
             <div class="text-center">
                 <ul class="list-group">
@@ -23,7 +30,7 @@
 
                     <form action="<c:url value="/news"/>" method="post">
                         <input type="hidden" name="id" value="${news.news_id}">
-                        <input type="submit" class="bg-light text-danger border rounded border-danger mt-1"
+                        <input type="submit" class="bg-light text-danger border rounded border-danger mt-1" name="btnVal"
                                value="delete">
                     </form>
 

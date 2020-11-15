@@ -136,5 +136,16 @@ $(document).ready(function () {
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.send(toServ);
         });
+
+        $('#reset').click(function (){
+            document.getElementById("badResult").innerHTML = "";
+            document.getElementById("goodResult").innerHTML = "";
+            document.getElementById("information").className = "noneShow";
+            $('#IShowOne').removeClass('show').addClass("noneShow");
+            $('#IShowByMajor').removeClass('show').addClass("noneShow");
+            $('#IShowByGroup').removeClass('show').addClass("noneShow");
+            $('#IShowByYear').removeClass('show').addClass("noneShow");
+            $('#submit').removeClass('show').addClass("noneShow");
+        });
     });
 });

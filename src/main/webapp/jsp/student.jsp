@@ -15,8 +15,11 @@
             <input type="text"  class="noneShow" name="showStudentsInput" id="IShowByMajor" placeholder="Show by major">
             <input type="text"  class="noneShow" name="showStudentsInput" id="IShowByYear" placeholder="Show by year">
             <br>
-            <input class="noneShow" id="submit" type="submit" value="Show">
-
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="noneShow btn btn-success" id="submit" type="submit" value="Show">Show</button>
+                <button class="show btn btn-danger" id="reset" type="reset" value="reset">Reset</button>
+            </div>
+        <br>
         <span class="text-danger"  id="badResult"></span>
         <span class="text-success" id="goodResult"></span>
 

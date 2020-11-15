@@ -9,6 +9,11 @@ public class Group {
     public Group() {
     }
 
+    public Group(Integer group_number) {
+        this.group_number = group_number;
+    }
+
+
     public Group(String major_id, Integer group_number) {
         setMajor_id(major_id);
         this.group_number = group_number;

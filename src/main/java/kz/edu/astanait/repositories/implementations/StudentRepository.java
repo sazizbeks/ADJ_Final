@@ -94,12 +94,11 @@ public class StudentRepository implements IStudentRepository {
     }
 
     @Override
-    public List<Student> findByGroup(Group group) throws NotFoundException {
-        String sql = "SELECT * FROM students WHERE major_id=? AND group_number=?";
+    public List<Student> findByGroup(Integer group_num) throws NotFoundException {
+        String sql = "SELECT * FROM students WHERE  group_number=?";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setString(1, group.getMajor_id());
-            ps.setInt(2, group.getGroup_number());
+            ps.setInt(1, group_num);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -108,11 +107,11 @@ public class StudentRepository implements IStudentRepository {
     }
 
     @Override
-    public List<Student> findByMajor(Major major) throws NotFoundException {
-        String sql = "SELECT * FROM students WHERE major_id=?";
+    public List<Student> findByMajor(String major) throws NotFoundException {
+        String sql = "SELECT * FROM students WHERE major_id = ? ";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setString(1, major.getId());
+            ps.setString(1,major);
             return findSeveral(ps.toString());
         } catch (SQLException throwable) {
             throwable.printStackTrace();

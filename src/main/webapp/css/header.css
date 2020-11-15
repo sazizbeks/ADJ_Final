@@ -128,3 +128,9 @@ p {
 .grid-item{
     padding: 10px;
 }
+.noneShow{
+    display: none;
+}
+.show{
+    display: block;
+}

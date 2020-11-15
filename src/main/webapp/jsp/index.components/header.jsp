@@ -34,7 +34,7 @@
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/club.jsp"/>">Club</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/event.jsp"/>">Event</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/news.jsp"/>">News</a></li>
-                    <li class="navigation__item is-active"><a href="<c:url value="/jsp/students.jsp"/>">Students</a></li>
+                    <li class="navigation__item is-active"><a href="<c:url value="/jsp/student.jsp"/>">Students</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/logout"/>" class="is-active">Logout</a></li>
                 </c:if>
             </ul>

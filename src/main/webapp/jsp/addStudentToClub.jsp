@@ -22,8 +22,9 @@
             <%-->
            Sign in form
             <--%>
-            <form action="<c:url value="/add/club"/>" method="post">
-                <input class="text" type="text" name="club_name" placeholder="Club name" required><br>
+            <form action="<c:url value="/add/student/to/club"/>" method="post">
+                <input class="text" type="text" name="cludId" placeholder="Club id" required><br>
+                <input class="text" type="text" name="studentId" placeholder="Student id" required><br>
                 <input type="submit" value="Add">
             </form>
         </div>

@@ -16,11 +16,10 @@ import java.util.List;
 public class ClubRepository implements IClubRepository {
     @Override
     public void add(Club entity) throws BadRequestException {
-        String sql = "INSERT INTO clubs(club_id, club_name) VALUES (?,?)";
+        String sql = "INSERT INTO clubs(club_name) VALUES (?)";
         try {
             PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
-            ps.setInt(1, entity.getClub_id());
-            ps.setString(2, entity.getClub_name());
+            ps.setString(1, entity.getClub_name());
             ps.execute();
         } catch (SQLException throwable) {
             throw new BadRequestException();
@@ -96,5 +95,18 @@ public class ClubRepository implements IClubRepository {
             throw new BadRequestException();
         }
         return list;
+    }
+
+    @Override
+    public void addStudentToClub(Integer club_id, Integer student_id) {
+        String sql = "INSERT INTO clubs_students(club_id, student_id) VALUES (?,?)";
+        try {
+            PreparedStatement ps = Postgres.getConnection().prepareStatement(sql);
+            ps.setInt(1, club_id);
+            ps.setInt(2, student_id);
+            ps.execute();
+        } catch (SQLException throwable) {
+            throw new BadRequestException();
+        }
     }
 }

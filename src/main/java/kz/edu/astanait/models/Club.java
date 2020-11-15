@@ -8,6 +8,10 @@ public class Club {
 
     }
 
+    public Club(String club_name) {
+        this.club_name = club_name;
+    }
+
     public Club(Builder builder){
         club_id = builder.club_id;
         club_name = builder.club_name;

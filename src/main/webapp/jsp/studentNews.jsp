@@ -7,6 +7,13 @@
     <div class="grid">
 
         <h1>My news</h1>
+
+        <a href="<c:url value="/jsp/addNews.jsp"/>">
+            <button class="btn btn-primary">
+                Add news
+            </button>
+        </a>
+
         <c:forEach var="news" items="${news.rows}">
             <div class="text-center">
                 <ul class="list-group">

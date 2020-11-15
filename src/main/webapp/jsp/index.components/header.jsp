@@ -31,7 +31,7 @@
                                                     href="<%=application.getContextPath()%>/jsp/register.jsp">Register</a></li>
                 </c:if>
                 <c:if test="${!empty sessionScope.user}">
-                    <li class="navigation__item is-active"><c:out value="${sessionScope.user.fname}"/></li>
+                    <li class="navigation__item is-active"><c:out value="${sessionScope.user.username}"/></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/club.jsp"/>">Club</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/event.jsp"/>">Event</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/news.jsp"/>">News</a></li>

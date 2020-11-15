@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/sql" %>
 
-<%--<s:setDataSource var = "snapshot" driver = "com.mysql.cj.jdbc.Driver"--%>
-<%--                 url = "jdbc:mysql://localhost:3306/project_sdp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"--%>
-<%--                 user = "root"  password = ""/>--%>
+<s:setDataSource var = "snapshot" driver = "org.postgresql.Driver"
+                 url = "jdbc:postgresql://localhost:5432/ADJ_Final"
+                 user = "postgres"  password = "87779548066"/>
+
 
 <html>
 <head>
@@ -34,7 +35,7 @@
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/club.jsp"/>">Club</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/event.jsp"/>">Event</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/news.jsp"/>">News</a></li>
-                    <li class="navigation__item is-active"><a href="<c:url value="/jsp/students.jsp"/>">Students</a></li>
+                    <li class="navigation__item is-active"><a href="<c:url value="/jsp/student.jsp"/>">Students</a></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/logout"/>" class="is-active">Logout</a></li>
                 </c:if>
             </ul>

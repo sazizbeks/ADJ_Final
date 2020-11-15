@@ -1,8 +1,6 @@
 package kz.edu.astanait.api.rest;
 
 import kz.edu.astanait.exceptions.NotFoundException;
-import kz.edu.astanait.models.Group;
-import kz.edu.astanait.models.Major;
 import kz.edu.astanait.models.Student;
 import kz.edu.astanait.repositories.implementations.StudentRepository;
 import kz.edu.astanait.repositories.interfaces.IStudentRepository;
@@ -39,13 +37,13 @@ public class StudentService {
     }
 
     @GET
-    @Path("/getByGroup/{group}/{groupNumber}")
+    @Path("/getByGroup/group/{groupNumber}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getByGroup(@PathParam("group") String group,
+    public Response getByGroup(
                                @PathParam("groupNumber") Integer groupNumber) {
         List<Student> list;
         try {
-            list = studentRepository.findByGroup(new Group(group, groupNumber));
+            list = studentRepository.findByGroup(groupNumber);
         } catch (NotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -58,7 +56,7 @@ public class StudentService {
     public Response getByMajor(@PathParam("major") String major) {
         List<Student> list;
         try {
-            list = studentRepository.findByMajor(new Major(major));
+            list = studentRepository.findByMajor(major);
         } catch (NotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

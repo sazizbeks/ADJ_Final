@@ -23,9 +23,13 @@
            Sign in form
             <--%>
             <form action="<c:url value="/login"/>" method="post">
-                <input class="email" type="email" name="email" placeholder="Email" required><br>
+                    <input class="text" type="text" name="username" placeholder="Username" required><br>
                 <input class="text" type="password" name="password" placeholder="Password" required><br>
-                <p class="text-danger">${message}</p>
+                <c:if test="${cookie.get('error')!=null}">
+                    <p style="color: red">
+                            ${cookie.get('error').value}
+                    </p>
+                </c:if>
                 <input type="submit" value="LOGIN">
             </form>
         </div>

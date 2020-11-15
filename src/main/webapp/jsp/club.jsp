@@ -23,13 +23,13 @@
                     <li class="list-group-item">${row.club_id}</li>
                     <li class="list-group-item">${row.club_name}</li>
                     <c:if test="${!empty sessionScope.admin}">
+
                         <form action="<c:url value="/club"/>">
                             <input type="hidden" name="club_id" value="${row.club_id}">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <input type="submit" class="bg-light text-primary border rounded border-primary mt-1 btn-sm edit" value="edit">
-                                <button class="bg-light text-danger border rounded border-danger mt-1 btn-sm delete" value="${row.club_id}" id="${row.club_id}">Delete</button>
-                            </div>
+                                <input type="submit" class="bg-light text-primary border rounded border-primary mt-1 btn-lg edit" value="edit">
                         </form>
+                            <br>
+                    <button class="bg-light text-danger border rounded border-danger btn-lg delete col-2 align-self-center" value="${row.club_id}" id="${row.club_id}">Delete</button>
                     </c:if>
                     </ul>
                 <br>

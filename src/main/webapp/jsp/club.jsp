@@ -3,13 +3,13 @@
     SELECT * FROM clubs;
 </s:query>
 <main class="main">
-
     <div class="grid">
-
         <h1>Clubs</h1>
+
         <c:if test="${!empty sessionScope.admin}">
-            <div class="text-center list-group">
-                <button class="bg-warning border rounded border-warning mb-auto"><a href="">Add</a></button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="<%=application.getContextPath()%>/jsp/addClub.jsp"><button class="bg-warning border rounded border-warning mb-auto">Add club</button></a>
+                <a href="<%=application.getContextPath()%>/jsp/addStudentToClub.jsp"><button class="bg-success border rounded border-success mb-auto">Add student to club</button></a>
             </div>
         </c:if>
 

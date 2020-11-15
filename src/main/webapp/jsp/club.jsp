@@ -26,9 +26,8 @@
 
                         <form action="<c:url value="/club"/>">
                             <input type="hidden" name="club_id" value="${row.club_id}">
-                                <input type="submit" class="bg-light text-primary border rounded border-primary mt-1 btn-lg edit" value="edit">
+                                <input type="submit" class="bg-light text-primary border rounded border-primary mt-1 btn-lg col-2 align-self-center edit" value="edit">
                         </form>
-                            <br>
                     <button class="bg-light text-danger border rounded border-danger btn-lg delete col-2 align-self-center" value="${row.club_id}" id="${row.club_id}">Delete</button>
                     </c:if>
                     </ul>

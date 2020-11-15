@@ -8,6 +8,12 @@
 
         <h1>My events</h1>
 
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="<%=application.getContextPath()%>/jsp/addEvent.jsp">
+                <button class="bg-warning border rounded border-warning mb-auto">Add event</button>
+            </a>
+        </div>
+
         <c:choose>
             <c:when test="${events.rows[0]==null}">
                 <div class="text-center">

@@ -21,8 +21,6 @@
                     <li class="list-group-item">${row.event_start_date}</li>
                     <li class="list-group-item">${row.event_end_date}</li>
                     <li class="list-group-item">${row.event_creator_id}</li>
-                    <input type="submit" class="bg-light text-primary border rounded border-primary" value="edit">
-                    <input type="submit" class="bg-light text-danger border rounded border-danger mt-1" value="delete">
                 </ul>
                 <br>
             </div>

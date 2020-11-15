@@ -23,7 +23,7 @@
 
                     <form action="<c:url value="/news"/>" method="post">
                         <input type="hidden" name="id" value="${news.news_id}">
-                        <input type="submit" class="bg-light text-danger border rounded border-danger mt-1"
+                        <input type="submit" class="bg-light text-danger border rounded border-danger mt-1" name="btnVal"
                                value="delete">
                     </form>
 

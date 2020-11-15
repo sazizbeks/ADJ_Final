@@ -1,6 +1,6 @@
 <%@include file="/jsp/index.components/header.jsp"%>
 <s:query dataSource = "${snapshot}" var = "events">
-    SELECT * FROM events;
+    SELECT * FROM events ORDER BY 1;
 </s:query>
 <main class="main">
 
@@ -8,7 +8,11 @@
 
         <h1>Event</h1>
 
-
+        <a href="<c:url value="/jsp/studentEvents.jsp"/>">
+            <button class="btn btn-primary">
+                My events
+            </button>
+        </a>
         <c:forEach var="row" items="${events.rows}">
             <div class="text-center">
                 <ul class="list-group">

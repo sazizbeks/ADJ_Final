@@ -28,15 +28,13 @@
                             <input type="hidden" name="club_id" value="${row.club_id}">
                                 <input type="submit" class="bg-light text-primary border rounded border-primary mt-1 btn-lg col-2 align-self-center edit" value="edit">
                         </form>
-                    <button class="bg-light text-danger border rounded border-danger btn-lg delete col-2 align-self-center" value="${row.club_id}" id="${row.club_id}">Delete</button>
+                    <button class="bg-light text-danger border rounded border-danger btn-lg delete col-2 align-self-center" value="${row.club_id}" id="${row.club_id}">delete</button>
                     </c:if>
                     </ul>
                 <br>
             </div>
         </c:forEach>
-
     </div>
-
 </main>
 
 <%@include file="/jsp/index.components/footer.jsp"%>

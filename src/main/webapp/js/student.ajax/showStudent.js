@@ -1,35 +1,35 @@
 $(document).ready(function () {
     $('.radioButton').click(function () {
         const radVal = $(this).val();
-        if(radVal == "showOne"){
+        if(radVal === "showOne"){
             $('#IShowOne').removeClass('noneShow').addClass("show");
             $('#IShowByGroup').removeClass('show').addClass("noneShow");
             $('#IShowByMajor').removeClass('show').addClass("noneShow");
             $('#IShowByYear').removeClass('show').addClass("noneShow");
             $('#submit').removeClass('noneShow').addClass("show");
         }
-        else if(radVal == "showByGroup"){
+        else if(radVal === "showByGroup"){
             $('#IShowByGroup').removeClass('noneShow').addClass("show");
             $('#IShowOne').removeClass('show').addClass("noneShow");
             $('#IShowByMajor').removeClass('show').addClass("noneShow");
             $('#IShowByYear').removeClass('show').addClass("noneShow");
             $('#submit').removeClass('noneShow').addClass("show");
         }
-        else if(radVal == "showByMajor"){
+        else if(radVal === "showByMajor"){
             $('#IShowByMajor').removeClass('noneShow').addClass("show");
             $('#IShowByGroup').removeClass('show').addClass("noneShow");
             $('#IShowOne').removeClass('show').addClass("noneShow");
             $('#IShowByYear').removeClass('show').addClass("noneShow");
             $('#submit').removeClass('noneShow').addClass("show");
         }
-        else if(radVal == "showByYear"){
+        else if(radVal === "showByYear"){
             $('#IShowByYear').removeClass('noneShow').addClass("show");
             $('#IShowByMajor').removeClass('show').addClass("noneShow");
             $('#IShowByGroup').removeClass('show').addClass("noneShow");
             $('#IShowOne').removeClass('show').addClass("noneShow");
             $('#submit').removeClass('noneShow').addClass("show");
         }
-        else if(radVal == "showAll"){
+        else if(radVal === "showAll"){
             $('#IShowOne').removeClass('show').addClass("noneShow");
             $('#IShowByMajor').removeClass('show').addClass("noneShow");
             $('#IShowByGroup').removeClass('show').addClass("noneShow");
@@ -48,26 +48,26 @@ $(document).ready(function () {
             let xhttp = new XMLHttpRequest();
             let search = radVal;
             let inputVal = "";
-            if(radVal == "showOne"){
+            if(radVal === "showOne"){
                 inputVal = document.getElementById("IShowOne").value;
             }
-            else if(radVal == "showByGroup"){
+            else if(radVal === "showByGroup"){
                 inputVal = document.getElementById("IShowByGroup").value;
             }
-            else if(radVal == "showByMajor"){
+            else if(radVal === "showByMajor"){
                 inputVal = document.getElementById("IShowByMajor").value;
             }
-            else if(radVal == "showByYear"){
+            else if(radVal === "showByYear"){
                 inputVal = document.getElementById("IShowByYear").value;
             }
-            else if(radVal == "showAll"){
+            else if(radVal === "showAll"){
                 inputVal = "all";
             }
             else{
                 inputVal = "";
             }
 
-            if (search.length==0) {
+            if (search.length===0) {
                 document.getElementById("badResult").innerHTML = "No such student in database";
                 document.getElementById("goodResult").innerHTML = "";
                 return;
@@ -146,6 +146,9 @@ $(document).ready(function () {
             $('#IShowByGroup').removeClass('show').addClass("noneShow");
             $('#IShowByYear').removeClass('show').addClass("noneShow");
             $('#submit').removeClass('show').addClass("noneShow");
+            setTimeout(function() {
+                window.location.href = '../jsp/student.jsp'
+            }, 200);
         });
     });
 });

@@ -14,7 +14,7 @@ public class Postgres {
         if (connection == null) {
             try {
                 Class.forName("org.postgresql.Driver");
-                connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ADJ_Final", "postgres", "87779548066");
+                connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ADJ_Final", "postgres", "3418533");
             } catch (SQLException | ClassNotFoundException throwable) {
                 throwable.printStackTrace();
             }

@@ -1,8 +1,6 @@
 package kz.edu.astanait.repositories.interfaces;
 
 import kz.edu.astanait.exceptions.NotFoundException;
-import kz.edu.astanait.models.Group;
-import kz.edu.astanait.models.Major;
 import kz.edu.astanait.models.Student;
 
 import java.util.List;

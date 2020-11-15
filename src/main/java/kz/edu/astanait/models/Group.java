@@ -1,7 +1,5 @@
 package kz.edu.astanait.models;
 
-import java.util.Date;
-
 public class Group {
     private String major_id;
     private Integer group_number;

@@ -2,7 +2,6 @@ package kz.edu.astanait.servlets;
 
 import com.google.gson.Gson;
 import kz.edu.astanait.exceptions.NotFoundException;
-import kz.edu.astanait.models.Group;
 import kz.edu.astanait.models.Student;
 import kz.edu.astanait.repositories.implementations.StudentRepository;
 

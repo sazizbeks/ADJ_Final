@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsRepository implements INewsRepository {
@@ -118,7 +118,7 @@ public class NewsRepository implements INewsRepository {
 
     @Override
     public List<News> findSeveral(String sql) throws BadRequestException {
-        List<News> list = new LinkedList<>();
+        List<News> list = new ArrayList<>();
         try {
             Statement statement = Postgres.getConnection().createStatement();
             ResultSet rs = statement.executeQuery(sql);

@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository implements IStudentRepository {
@@ -39,7 +39,7 @@ public class StudentRepository implements IStudentRepository {
 
     @Override
     public List<Student> findSeveral(String sql) {
-        List<Student> list = new LinkedList<>();
+        List<Student> list = new ArrayList<>();
 
         try {
             Statement statement = Postgres.getConnection().createStatement();

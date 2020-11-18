@@ -3,10 +3,7 @@ package kz.edu.astanait.repositories.implementations;
 import kz.edu.astanait.databases.Postgres;
 import kz.edu.astanait.exceptions.NotFoundException;
 import kz.edu.astanait.models.Admin;
-import kz.edu.astanait.models.Club;
-import kz.edu.astanait.models.Event;
 import kz.edu.astanait.repositories.interfaces.IAdminRepository;
-import kz.edu.astanait.repositories.interfaces.IRetrieve;
 
 import javax.ws.rs.BadRequestException;
 import java.sql.PreparedStatement;

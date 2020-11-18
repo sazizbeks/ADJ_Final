@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/sql" %>
 
-<s:setDataSource var = "snapshot" driver = "org.postgresql.Driver"
-                 url = "jdbc:postgresql://localhost:5432/ADJ_Final"
-                 user = "postgres"  password = "3418533"/>
+<s:setDataSource var="snapshot" driver="org.postgresql.Driver"
+                 url="jdbc:postgresql://localhost:5432/ADJ_Final"
+                 user="postgres" password="3418533"/>
 
 
 <html>
@@ -32,10 +32,13 @@
                 <c:if test="${!empty sessionScope.user}">
                     <li class="navigation__item is-active"><c:out value="${sessionScope.user.username}"/></li>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/club.jsp"/>">Club</a></li>
-                    <li class="navigation__item is-active"><a href="<c:url value="/jsp/event.jsp"/>">Event</a></li>
-                    <li class="navigation__item is-active"><a href="<c:url value="/news?btnVal=all"/>">News</a></li>
+                    <c:if test="${sessionScope.admin!=true}">
+                        <li class="navigation__item is-active"><a href="<c:url value="/jsp/event.jsp"/>">Event</a></li>
+                        <li class="navigation__item is-active"><a href="<c:url value="/news?btnVal=all"/>">News</a></li>
+                    </c:if>
                     <li class="navigation__item is-active"><a href="<c:url value="/jsp/student.jsp"/>">Students</a></li>
-                    <li class="navigation__item is-active"><a href="<c:url value="/logout"/>" class="is-active">Logout</a></li>
+                    <li class="navigation__item is-active"><a href="<c:url value="/logout"/>"
+                                                              class="is-active">Logout</a></li>
                 </c:if>
             </ul>
         </nav>
